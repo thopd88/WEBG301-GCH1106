@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 255)->nullable();
-            $table->string('author', 100);
-            $table->timestamps();
+        Schema::table('books', function (Blueprint $table) {
+            $table->string('publisher', 100)->default('Laravel');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::table('books', function (Blueprint $table) {
+            //
+        });
     }
 };
