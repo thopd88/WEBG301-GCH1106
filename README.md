@@ -16,3 +16,16 @@
 ## Refresh Database
 ```php artisan migrate:refresh```
 
+# Clone Project
+## Clone Project
+```git clone```
+## Install Dependencies
+```composer update```
+## Create .env file and modify database settings
+```cp .env.example .env```
+## Generate Key
+```php artisan key:generate```
+## Migration
+```php artisan migrate```
+## Run Project
+```php artisan serve```
