@@ -2,7 +2,6 @@
 
 ### Install
 ```composer install```
-```npm install```
 ```cp .env.example .env```
 ```php artisan key:generate```
 ```php artisan migrate```
@@ -17,4 +16,20 @@
 Route::resources([
     'books' => BookController::class,
 ]);
+```
+
+### Book Controller
+```
+public function index()
+{
+    $books = Book::all();
+    return view('books.index', ['books' => $books]);
+}
+```
+```
+public function show(string $id)
+{
+    $book = Book::find($id);
+    return view('book.show', ['book' => $book]);
+}
 ```
