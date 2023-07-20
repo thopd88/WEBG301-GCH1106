@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/books', function () {
+    $BookIndex = new BookController();
+    return $BookIndex->index();
 });
-Route::get('/', function () {
-    return "Hello World";
+
+Route::get('/books/create', function () {
+    $BookCreate = new BookController();
+    return $BookCreate->create();
+});
+
+Route::get('/authors', function () {
+    $AuthorIndex = new AuthorController();
+    return $AuthorIndex->index();
+});
+
+Route::get('/authors/create', function () {
+    $AuthorCreate = new AuthorController();
+    return $AuthorCreate->create();
 });
