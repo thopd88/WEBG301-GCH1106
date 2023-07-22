@@ -28,4 +28,5 @@ Route::resources([
 // Route::get('/books/{book}', [BookController::class, 'show']);
 // Route::get('/books/{book}/edit', [BookController::class, 'edit']);
 // Route::put('/books/{book}', [BookController::class, 'update']);
+// Route::get('/books/{book}/delete', [BookController::class, 'delete']);
 // Route::delete('/books/{book}', [BookController::class, 'destroy']);

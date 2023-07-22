@@ -1,4 +1,23 @@
 ### CRUD Book
+## Delete
+# BookController
+```
+    public function destroy(string $id)
+    {
+        $book = Book::find($id);
+        $book->delete();
+        return redirect('/books');
+    }
+```
+# Delete Book View (index.blade.php)
+```
+    <form action="/books/{{ $book->id }}" method="post" style="display: inline">
+        @method('DELETE')
+        @csrf
+        <input type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+    </form>
+```
+
 ## Edit
 # BookController
 ```

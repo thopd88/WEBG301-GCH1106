@@ -68,11 +68,19 @@ class BookController extends Controller
         return redirect('/books');
     }
 
+    // public function delete(string $id)
+    // {
+    //     $book = Book::find($id);
+    //     return view('book.delete', ['book' => $book]);
+    // }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::find($id);
+        $book->delete();
+        return redirect('/books');
     }
 }
