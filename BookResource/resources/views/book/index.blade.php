@@ -4,6 +4,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Year</th>
+        <th>Action</th>
     </tr>
     @foreach($books as $book)
         <tr>
@@ -11,6 +12,7 @@
             <td>{{ $book->title }}</td>
             <td>{{ $book->description }}</td>
             <td>{{ $book->year }}</td>
+            <td><a href="/books/{{$book->id}}/edit">Edit</a></td>
         </tr>
     @endforeach
 </table>

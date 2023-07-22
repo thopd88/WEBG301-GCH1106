@@ -1,4 +1,30 @@
 ### CRUD Book
+## Edit
+# BookController
+```
+    public function edit(string $id)
+    {
+        $book = Book::find($id);
+        return view('book.edit', ['book' => $book]);
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $book = Book::find($id);
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->year = $request->year;
+        $book->save();
+        return redirect('/books');
+    }
+```
+# Edit Book View
+```
+    action="/books/{{ $book->id }}"
+    @csrf
+    @method('PUT')
+```
+
 ## Create 
 # BookController
 ```
