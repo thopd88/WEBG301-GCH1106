@@ -1,3 +1,29 @@
+### CRUD Book
+## Create 
+# BookController
+```
+    public function create()
+    {
+        return view('book.create');
+    }
+
+    public function store(Request $request)
+    {
+        $book = new Book();
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->year = $request->year;
+        $book->save();
+        return redirect('/books');
+    }
+```
+# Create Book View
+```
+    @csrf
+```
+
+
+
 ## Book Resource Project
 
 ### Install
