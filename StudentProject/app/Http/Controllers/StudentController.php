@@ -29,13 +29,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        if (strlen($request->get('name'))==0)
+            return redirect('students')->with('error', 'Name is required');
         $student = new Student();
         $student->name = $request->get('name');
         $student->email = $request->get('email');
         $student->phone = $request->get('phone');
         $student->address = $request->get('address');
         $student->save();
-        return redirect('students');
+        return redirect('students')->with('success', 'Student has been successfully added');
     }
 
     /**
