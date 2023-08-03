@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +26,9 @@ Route::resources([
 
 Route::resources([
     'categories' => CategoryController::class
+    ]
+);
+Route::resources([
+    'tags' => TagController::class
     ]
 );

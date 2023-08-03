@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -23,7 +24,8 @@ class BookController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('book.create', ['categories' => $categories]);
+        $tags = Tag::all();
+        return view('book.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -37,6 +39,7 @@ class BookController extends Controller
         $book->year = $request->year;
         $book->category_id = $request->category_id;
         $book->save();
+        $book->tags()->attach($request->tags);
         return redirect('/books');
     }
 
@@ -55,7 +58,9 @@ class BookController extends Controller
     public function edit(string $id)
     {
         $book = Book::find($id);
-        return view('book.edit', ['book' => $book]);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('book.edit', ['book'=>$book, 'categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -67,6 +72,7 @@ class BookController extends Controller
         $book->title = $request->title;
         $book->description = $request->description;
         $book->year = $request->year;
+        $book->tags()->sync($request->tags);
         $book->save();
         return redirect('/books');
     }
