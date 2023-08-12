@@ -1,10 +1,13 @@
-<form action="/books" method="post">
+<form action="/books" method="post" enctype="multipart/form-data">
     @csrf
     <label for="title">Title</label>
     <input type="text" name="title" id="title">
     <br>
     <label for="description">Description</label>
     <input type="text" name="description" id="description">
+    <br>
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image">
     <br>
     <label for="year">Year</label>
     <input type="text" name="year" id="year">

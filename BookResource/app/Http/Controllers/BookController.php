@@ -36,6 +36,12 @@ class BookController extends Controller
         $book = new Book();
         $book->title = $request->title;
         $book->description = $request->description;
+        
+        if ($request->hasFile('image')) {
+            $book->image = $request->file('image')->store('public/images');
+            $book->image = env('APP_URL').str_replace('public/', '/upload/', $book->image);
+        }
+        
         $book->year = $request->year;
         $book->category_id = $request->category_id;
         $book->save();
@@ -71,6 +77,9 @@ class BookController extends Controller
         $book = Book::find($id);
         $book->title = $request->title;
         $book->description = $request->description;
+        if ($request->hasFile('image')) {
+            $book->image = $request->file('image')->store('public/images');
+        }
         $book->year = $request->year;
         $book->tags()->sync($request->tags);
         $book->save();
