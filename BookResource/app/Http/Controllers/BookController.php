@@ -23,6 +23,9 @@ class BookController extends Controller
      */
     public function create()
     {
+        if (!auth()->check()) {
+            return redirect('/login');
+        }
         $categories = Category::all();
         $tags = Tag::all();
         return view('book.create', ['categories' => $categories, 'tags' => $tags]);
