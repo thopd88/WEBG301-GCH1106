@@ -1,24 +1,38 @@
 ### Add Image to Book model
 ## Migration
-```php artisan make:migration add_image_to_books_table```
-```Schema::table('books', function (Blueprint $table) {
+```
+php artisan make:migration add_image_to_books_table
+```
+```
+Schema::table('books', function (Blueprint $table) {
             $table->string('image')->nullable()->after('description');
-        });```
-```php artisan migrate```
+        });
+```
+```
+php artisan migrate
+```
 ## BookController
-```if ($request->hasFile('image')) {
+```
+if ($request->hasFile('image')) {
     $book->image = $request->file('image')->store('public/images');
     $book->image = env('APP_URL').str_replace('public/', '/upload/', $book->image);
-}```
+}
+```
 ## Books View
-```<form action="/books" method="post" enctype="multipart/form-data">
-<input type="file" name="image" id="image">```
+```
+<form action="/books" method="post" enctype="multipart/form-data">
+<input type="file" name="image" id="image">
+```
 ## config/filesystems.php
-```'links' => [
+```
+'links' => [
     public_path('upload') => storage_path('app/public'),
-],```
+],
+```
 ## Create symlink
-```php artisan storage:link```
+```
+php artisan storage:link
+```
 
 
 ### CRUD Book
